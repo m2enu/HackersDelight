@@ -56,3 +56,6 @@ lib/unity/
 
 # Temporary files or directories
 tmp/
+
+# Document directories
+html/

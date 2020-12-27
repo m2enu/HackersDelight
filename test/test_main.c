@@ -1,8 +1,12 @@
-/******************************************************************************
- * Copyright (c) 2020 m2enu
- * Released under the MIT License
- * https://github.com/m2enu/HackersDelight/blob/master/LICENSE.txt
- *****************************************************************************/
+/**
+ * @file        test_main.c
+ * @brief       Unittest runner main
+ * @author      m2enu
+ * @date        2020/12/27
+ * @copyright   Copyright (c) 2020 m2enu
+ * @par         License
+ *              https://github.com/m2enu/HackersDelight/blob/main/LICENSE
+ */
 
 #include <unity.h>
 #include "chapter_02_01.h"

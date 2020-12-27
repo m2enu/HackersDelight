@@ -1,8 +1,12 @@
-/******************************************************************************
- * Copyright (c) 2020 m2enu
- * Released under the MIT License
- * https://github.com/m2enu/HackersDelight/blob/master/LICENSE.txt
- *****************************************************************************/
+/**
+ * @file        main.c
+ * @brief       Study of Hacker's Delight: main function
+ * @author      m2enu
+ * @date        2020/12/27
+ * @copyright   Copyright (c) 2020 m2enu
+ * @par         License
+ *              https://github.com/m2enu/HackersDelight/blob/main/LICENSE
+ */
 
 #include <stdio.h>
 
