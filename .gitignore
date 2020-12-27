@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Unittest frameworks
+lib/unity/
+
+# Temporary files or directories
+tmp/
