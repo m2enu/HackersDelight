@@ -11,10 +11,13 @@
 #include <unity.h>
 #include "chapter_02_01.h"
 
+static void test_TurnOffRightmost1Bit(void);
+static void test_TurnOnRightmost0Bit(void);
+
 /**
  * @brief Test for TurnOffRightmost1Bit
  */
-void test_TurnOffRightmost1Bit(void)
+static void test_TurnOffRightmost1Bit(void)
 {
     TEST_ASSERT_EQUAL_HEX8(0b00000000u, TurnOffRightmost1Bit(0b00000000u));
 
@@ -37,14 +40,34 @@ void test_TurnOffRightmost1Bit(void)
 }
 
 /**
+ * @brief Test for TurnOnRightmost0Bit
+ */
+static void test_TurnOnRightmost0Bit(void)
+{
+    TEST_ASSERT_EQUAL_HEX8(0b11111111u, TurnOnRightmost0Bit(0b11111111u));
+
+    TEST_ASSERT_EQUAL_HEX8(0b11111111u, TurnOnRightmost0Bit(0b11111110u));
+    TEST_ASSERT_EQUAL_HEX8(0b11111111u, TurnOnRightmost0Bit(0b11111101u));
+    TEST_ASSERT_EQUAL_HEX8(0b11111111u, TurnOnRightmost0Bit(0b11111011u));
+    TEST_ASSERT_EQUAL_HEX8(0b11111111u, TurnOnRightmost0Bit(0b11110111u));
+    TEST_ASSERT_EQUAL_HEX8(0b11111111u, TurnOnRightmost0Bit(0b11101111u));
+    TEST_ASSERT_EQUAL_HEX8(0b11111111u, TurnOnRightmost0Bit(0b11011111u));
+    TEST_ASSERT_EQUAL_HEX8(0b11111111u, TurnOnRightmost0Bit(0b10111111u));
+    TEST_ASSERT_EQUAL_HEX8(0b11111111u, TurnOnRightmost0Bit(0b01111111u));
+
+    TEST_ASSERT_EQUAL_HEX8(0b10101111u, TurnOnRightmost0Bit(0b10100111u));
+}
+
+/**
  * @brief Unittest main
  */
 int main(void)
 {
     UNITY_BEGIN();
-    RUN_TEST(test_TurnOffRightmost1Bit);
+    RUN_TEST(test_TurnOffRightmost1Bit                                  );
+    RUN_TEST(test_TurnOnRightmost0Bit                                   );
     return UNITY_END();
 }
 
 // end of file {{{1
-// vim:ft=c:noet:ts=4:nowrap:fdm=marker
+// vim:ft=c:et:ts=4:nowrap:fdm=marker

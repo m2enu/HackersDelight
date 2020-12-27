@@ -14,6 +14,7 @@
 #include <stdint.h>
 
 uint8_t TurnOffRightmost1Bit(uint8_t);
+uint8_t TurnOnRightmost0Bit(uint8_t);
 
 #endif  // CHAPTER_02_01_H
 
