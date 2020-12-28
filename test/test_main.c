@@ -21,6 +21,14 @@ static void test_Trailing0BitsPosition(void);
 static void test_Trailing1BitsPosition(void);
 static void test_IsolateRightmost1Bit(void);
 
+static void test_PositiveAbsolute(void);
+static void test_NegativeAbsolute(void);
+
+static void test_FloorAverageOfTwoUnsigned(void);
+static void test_CeilAverageOfTwoUnsigned(void);
+static void test_FloorAverageOfTwoSigned(void);
+static void test_CeilAverageOfTwoSigned(void);
+
 /**
  * @brief       Test for TurnOffRightmost1Bit
  */
@@ -283,11 +291,128 @@ static void test_IsolateRightmost1Bit(void)
 }
 
 /**
+ * @brief       Test for PositiveAbsolute
+ */
+static void test_PositiveAbsolute(void)
+{
+    TEST_ASSERT_EQUAL_HEX8(  0u, PositiveAbsolute(   0));
+    TEST_ASSERT_EQUAL_HEX8(127u, PositiveAbsolute( 127));
+    TEST_ASSERT_EQUAL_HEX8(128u, PositiveAbsolute(-128));
+    TEST_ASSERT_EQUAL_HEX8(  1u, PositiveAbsolute(  -1));
+}
+
+/**
+ * @brief       Test for NegativeAbsolute
+ */
+static void test_NegativeAbsolute(void)
+{
+    TEST_ASSERT_EQUAL_HEX8(-  0u, NegativeAbsolute(   0));
+    TEST_ASSERT_EQUAL_HEX8(-127u, NegativeAbsolute( 127));
+    TEST_ASSERT_EQUAL_HEX8(-128u, NegativeAbsolute(-128));
+    TEST_ASSERT_EQUAL_HEX8(-  1u, NegativeAbsolute(  -1));
+}
+
+/**
+ * @brief       Test for FloorAverageOfTwoUnsigned
+ */
+static void test_FloorAverageOfTwoUnsigned(void)
+{
+    TEST_ASSERT_EQUAL_HEX8(   0u, FloorAverageOfTwoUnsigned(   0u,   0u));
+    TEST_ASSERT_EQUAL_HEX8(   0u, FloorAverageOfTwoUnsigned(   0u,   1u));
+    TEST_ASSERT_EQUAL_HEX8(   1u, FloorAverageOfTwoUnsigned(   1u,   1u));
+    TEST_ASSERT_EQUAL_HEX8(   1u, FloorAverageOfTwoUnsigned(   0u,   2u));
+    TEST_ASSERT_EQUAL_HEX8(   1u, FloorAverageOfTwoUnsigned(   1u,   2u));
+    TEST_ASSERT_EQUAL_HEX8( 127u, FloorAverageOfTwoUnsigned( 127u, 127u));
+    TEST_ASSERT_EQUAL_HEX8( 127u, FloorAverageOfTwoUnsigned( 128u, 127u));
+    TEST_ASSERT_EQUAL_HEX8( 128u, FloorAverageOfTwoUnsigned( 129u, 127u));
+    TEST_ASSERT_EQUAL_HEX8( 127u, FloorAverageOfTwoUnsigned(   0u, 255u));
+    TEST_ASSERT_EQUAL_HEX8( 128u, FloorAverageOfTwoUnsigned(   1u, 255u));
+    TEST_ASSERT_EQUAL_HEX8( 128u, FloorAverageOfTwoUnsigned(   2u, 255u));
+    TEST_ASSERT_EQUAL_HEX8( 254u, FloorAverageOfTwoUnsigned( 254u, 255u));
+    TEST_ASSERT_EQUAL_HEX8( 255u, FloorAverageOfTwoUnsigned( 255u, 255u));
+}
+
+/**
+ * @brief       Test for CeilAverageOfTwoUnsigned
+ */
+static void test_CeilAverageOfTwoUnsigned(void)
+{
+    TEST_ASSERT_EQUAL_HEX8(   0u, CeilAverageOfTwoUnsigned(   0u,   0u));
+    TEST_ASSERT_EQUAL_HEX8(   1u, CeilAverageOfTwoUnsigned(   0u,   1u));
+    TEST_ASSERT_EQUAL_HEX8(   1u, CeilAverageOfTwoUnsigned(   1u,   1u));
+    TEST_ASSERT_EQUAL_HEX8(   1u, CeilAverageOfTwoUnsigned(   0u,   2u));
+    TEST_ASSERT_EQUAL_HEX8(   2u, CeilAverageOfTwoUnsigned(   1u,   2u));
+    TEST_ASSERT_EQUAL_HEX8( 127u, CeilAverageOfTwoUnsigned( 127u, 127u));
+    TEST_ASSERT_EQUAL_HEX8( 128u, CeilAverageOfTwoUnsigned( 128u, 127u));
+    TEST_ASSERT_EQUAL_HEX8( 128u, CeilAverageOfTwoUnsigned( 129u, 127u));
+    TEST_ASSERT_EQUAL_HEX8( 128u, CeilAverageOfTwoUnsigned(   0u, 255u));
+    TEST_ASSERT_EQUAL_HEX8( 128u, CeilAverageOfTwoUnsigned(   1u, 255u));
+    TEST_ASSERT_EQUAL_HEX8( 129u, CeilAverageOfTwoUnsigned(   2u, 255u));
+    TEST_ASSERT_EQUAL_HEX8( 255u, CeilAverageOfTwoUnsigned( 254u, 255u));
+    TEST_ASSERT_EQUAL_HEX8( 255u, CeilAverageOfTwoUnsigned( 255u, 255u));
+}
+
+/**
+ * @brief       Test for FloorAverageOfTwoSigned
+ */
+static void test_FloorAverageOfTwoSigned(void)
+{
+    /* Expected the same result as unsigned */
+    TEST_ASSERT_EQUAL_HEX8(   0, FloorAverageOfTwoSigned(   0,    0));
+    TEST_ASSERT_EQUAL_HEX8(   0, FloorAverageOfTwoSigned(   0,    1));
+    TEST_ASSERT_EQUAL_HEX8(   1, FloorAverageOfTwoSigned(   1,    1));
+    TEST_ASSERT_EQUAL_HEX8(   1, FloorAverageOfTwoSigned(   0,    2));
+    TEST_ASSERT_EQUAL_HEX8(   1, FloorAverageOfTwoSigned(   1,    2));
+    TEST_ASSERT_EQUAL_HEX8( 126, FloorAverageOfTwoSigned( 125,  127));
+    TEST_ASSERT_EQUAL_HEX8( 126, FloorAverageOfTwoSigned( 126,  127));
+    TEST_ASSERT_EQUAL_HEX8( 127, FloorAverageOfTwoSigned( 127,  127));
+    /* Signed */
+    TEST_ASSERT_EQUAL_HEX8(  -1, FloorAverageOfTwoSigned(   0,   -1));
+    TEST_ASSERT_EQUAL_HEX8(  -1, FloorAverageOfTwoSigned(  -1,   -1));
+    TEST_ASSERT_EQUAL_HEX8(  -2, FloorAverageOfTwoSigned(  -1,   -2));
+    TEST_ASSERT_EQUAL_HEX8(  -2, FloorAverageOfTwoSigned(  -2,   -2));
+    TEST_ASSERT_EQUAL_HEX8( -64, FloorAverageOfTwoSigned(  -1, -127));
+    TEST_ASSERT_EQUAL_HEX8( -65, FloorAverageOfTwoSigned(  -2, -127));
+    TEST_ASSERT_EQUAL_HEX8( -65, FloorAverageOfTwoSigned(  -3, -127));
+    TEST_ASSERT_EQUAL_HEX8(-127, FloorAverageOfTwoSigned(-127, -127));
+    TEST_ASSERT_EQUAL_HEX8(-128, FloorAverageOfTwoSigned(-127, -128));
+    TEST_ASSERT_EQUAL_HEX8(-128, FloorAverageOfTwoSigned(-128, -128));
+}
+
+/**
+ * @brief       Test for CeilAverageOfTwoSigned
+ */
+static void test_CeilAverageOfTwoSigned(void)
+{
+    /* Expected the same result as unsigned */
+    TEST_ASSERT_EQUAL_HEX8(   0, CeilAverageOfTwoSigned(   0,    0));
+    TEST_ASSERT_EQUAL_HEX8(   1, CeilAverageOfTwoSigned(   0,    1));
+    TEST_ASSERT_EQUAL_HEX8(   1, CeilAverageOfTwoSigned(   1,    1));
+    TEST_ASSERT_EQUAL_HEX8(   1, CeilAverageOfTwoSigned(   0,    2));
+    TEST_ASSERT_EQUAL_HEX8(   2, CeilAverageOfTwoSigned(   1,    2));
+    TEST_ASSERT_EQUAL_HEX8( 126, CeilAverageOfTwoSigned( 125,  127));
+    TEST_ASSERT_EQUAL_HEX8( 127, CeilAverageOfTwoSigned( 126,  127));
+    TEST_ASSERT_EQUAL_HEX8( 127, CeilAverageOfTwoSigned( 127,  127));
+    /* Signed */
+    TEST_ASSERT_EQUAL_HEX8(   0, CeilAverageOfTwoSigned(   0,   -1));
+    TEST_ASSERT_EQUAL_HEX8(  -1, CeilAverageOfTwoSigned(  -1,   -1));
+    TEST_ASSERT_EQUAL_HEX8(  -1, CeilAverageOfTwoSigned(  -1,   -2));
+    TEST_ASSERT_EQUAL_HEX8(  -2, CeilAverageOfTwoSigned(  -2,   -2));
+    TEST_ASSERT_EQUAL_HEX8( -64, CeilAverageOfTwoSigned(  -1, -127));
+    TEST_ASSERT_EQUAL_HEX8( -64, CeilAverageOfTwoSigned(  -2, -127));
+    TEST_ASSERT_EQUAL_HEX8( -65, CeilAverageOfTwoSigned(  -3, -127));
+    TEST_ASSERT_EQUAL_HEX8(-127, CeilAverageOfTwoSigned(-127, -127));
+    TEST_ASSERT_EQUAL_HEX8(-127, CeilAverageOfTwoSigned(-127, -128));
+    TEST_ASSERT_EQUAL_HEX8(-128, CeilAverageOfTwoSigned(-128, -128));
+}
+
+/**
  * @brief Unittest main
  */
 int main(void)
 {
     UNITY_BEGIN();
+    /* Chapter 2-1 */
     RUN_TEST(test_TurnOffRightmost1Bit                                  );
     RUN_TEST(test_TurnOnRightmost0Bit                                   );
     RUN_TEST(test_TurnOffTrailing1Bits                                  );
@@ -297,6 +422,14 @@ int main(void)
     RUN_TEST(test_Trailing0BitsPosition                                 );
     RUN_TEST(test_Trailing1BitsPosition                                 );
     RUN_TEST(test_IsolateRightmost1Bit                                  );
+    /* Chapter 2-4 */
+    RUN_TEST(test_PositiveAbsolute                                      );
+    RUN_TEST(test_NegativeAbsolute                                      );
+    /* Chapter 2-5 */
+    RUN_TEST(test_FloorAverageOfTwoUnsigned                             );
+    RUN_TEST(test_CeilAverageOfTwoUnsigned                              );
+    RUN_TEST(test_FloorAverageOfTwoSigned                               );
+    RUN_TEST(test_CeilAverageOfTwoSigned                                );
     return UNITY_END();
 }
 

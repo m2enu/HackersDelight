@@ -151,5 +151,95 @@ uint8_t IsolateRightmost1Bit(uint8_t val)
     return val & -val;
 }
 
+/**
+ * @brief       Computing the positive absolute value
+ *
+ * @param[in]   (val) Value to convert to the positive absolute value.
+ * @return      Positive absolute value
+ *
+ * @par         Chapter
+ *              2-4
+ */
+uint8_t PositiveAbsolute(int8_t val)
+{
+    uint8_t y = val >> 7;
+    return (val ^ y) - y;
+}
+
+/**
+ * @brief       Computing the negative absolute value
+ *
+ * @param[in]   (val) Value to convert to the negative absolute value.
+ * @return      Negative absolute value
+ *
+ * @par         Chapter
+ *              2-4
+ */
+uint8_t NegativeAbsolute(int8_t val)
+{
+    uint8_t y = val >> 7;
+    return y - (val ^ y);
+}
+
+/**
+ * @brief       Computing the floor average of two unsigned value.
+ *
+ * @param[in]   (x) Value 1
+ * @param[in]   (y) Value 2
+ * @return      Unsigned floor average value
+ *
+ * @par         Chapter
+ *              2-5
+ */
+uint8_t FloorAverageOfTwoUnsigned(uint8_t x, uint8_t y)
+{
+    return (x & y) + ((x ^ y) >> 1);
+}
+
+/**
+ * @brief       Computing the ceil average of two unsigned value.
+ *
+ * @param[in]   (x) Value 1
+ * @param[in]   (y) Value 2
+ * @return      Unsigned ceil average value
+ *
+ * @par         Chapter
+ *              2-5
+ */
+uint8_t CeilAverageOfTwoUnsigned(uint8_t x, uint8_t y)
+{
+    return (x | y) - ((x ^ y) >> 1);
+}
+
+/**
+ * @brief       Computing the floor average of two signed value.
+ *
+ * @param[in]   (x) Value 1
+ * @param[in]   (y) Value 2
+ * @return      Signed floor average value
+ *
+ * @par         Chapter
+ *              2-5
+ */
+int8_t FloorAverageOfTwoSigned(int8_t x, int8_t y)
+{
+    return (x & y) + ((x ^ y) >> 1);
+}
+
+/**
+ * @brief       Computing the ceil average of two signed value.
+ *
+ * @param[in]   (x) Value 1
+ * @param[in]   (y) Value 2
+ * @return      Signed ceil average value
+ *
+ * @par         Chapter
+ *              2-5
+ */
+int8_t CeilAverageOfTwoSigned(int8_t x, int8_t y)
+{
+    return (x | y) - ((x ^ y) >> 1);
+}
+
 // end of file {{{1
 // vim:ft=c:et:nowrap:fdm=marker

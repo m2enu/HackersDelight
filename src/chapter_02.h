@@ -23,6 +23,14 @@ uint8_t Trailing0BitsPosition(uint8_t);
 uint8_t Trailing1BitsPosition(uint8_t);
 uint8_t IsolateRightmost1Bit(uint8_t);
 
+uint8_t PositiveAbsolute(int8_t);
+uint8_t NegativeAbsolute(int8_t);
+
+uint8_t FloorAverageOfTwoUnsigned(uint8_t, uint8_t);
+uint8_t CeilAverageOfTwoUnsigned(uint8_t, uint8_t);
+int8_t FloorAverageOfTwoSigned(int8_t, int8_t);
+int8_t CeilAverageOfTwoSigned(int8_t, int8_t);
+
 #endif  // CHAPTER_02_01_H
 
 // end of file {{{1
