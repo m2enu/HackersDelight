@@ -9,7 +9,7 @@
  */
 
 #include <unity.h>
-#include "chapter_02_01.h"
+#include "chapter_02.h"
 
 static void test_TurnOffRightmost1Bit(void);
 static void test_TurnOnRightmost0Bit(void);

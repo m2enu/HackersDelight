@@ -8,7 +8,7 @@
  *              https://github.com/m2enu/HackersDelight/blob/main/LICENSE
  */
 
-#include "chapter_02_01.h"
+#include "chapter_02.h"
 
 /**
  * @brief       Turn off the rightmost 1 bit
