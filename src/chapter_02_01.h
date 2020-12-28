@@ -15,6 +15,13 @@
 
 uint8_t TurnOffRightmost1Bit(uint8_t);
 uint8_t TurnOnRightmost0Bit(uint8_t);
+uint8_t TurnOffTrailing1Bits(uint8_t);
+uint8_t TurnOnTrailing0Bits(uint8_t);
+uint8_t Rightmost0BitPosition(uint8_t);
+uint8_t Rightmost1BitPosition(uint8_t);
+uint8_t Trailing0BitsPosition(uint8_t);
+uint8_t Trailing1BitsPosition(uint8_t);
+uint8_t IsolateRightmost1Bit(uint8_t);
 
 #endif  // CHAPTER_02_01_H
 
