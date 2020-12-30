@@ -31,6 +31,16 @@ uint8_t CeilAverageOfTwoUnsigned(uint8_t, uint8_t);
 int8_t FloorAverageOfTwoSigned(int8_t, int8_t);
 int8_t CeilAverageOfTwoSigned(int8_t, int8_t);
 
+int8_t SignExtension1(uint8_t);
+int8_t SignExtension2(uint8_t);
+int8_t SignExtension3(uint8_t);
+
+typedef enum {
+    ZeroMeans2to3rdPowerMin = 0,
+    ZeroMeans2to3rdPowerMax = 7,
+} ZeroMeans2to3rdPower_t;
+uint8_t DecordingZeroMeans2To3rdPower(uint8_t);
+
 #endif  // CHAPTER_02_01_H
 
 // end of file {{{1

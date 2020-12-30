@@ -241,5 +241,56 @@ int8_t CeilAverageOfTwoSigned(int8_t x, int8_t y)
     return (x | y) - ((x ^ y) >> 1);
 }
 
+/**
+ * @brief       Extend unsigned to signed: formula 1.
+ *
+ * @param[in]   (val) Value to be extended to signed
+ * @return      Sign extended value
+ */
+int8_t SignExtension1(uint8_t val)
+{
+    return ((val + 0x80) & 0xff) - 0x80;
+}
+
+/**
+ * @brief       Extend unsigned to signed: formula 2.
+ *
+ * @param[in]   (val) Value to be extended to signed
+ * @return      Sign extended value
+ */
+int8_t SignExtension2(uint8_t val)
+{
+#if 1
+    /** when known the unwanted high-order bits are all 0. */
+    return ( val         ^ 0x80) - 0x80;
+#else
+    return ((val & 0xff) ^ 0x80) - 0x80;
+#endif
+}
+
+/**
+ * @brief       Extend unsigned to signed: formula 3.
+ *
+ * @param[in]   (val) Value to be extended to signed
+ * @return      Sign extended value
+ */
+int8_t SignExtension3(uint8_t val)
+{
+    return (val & 0x7f) - (val & 0x80);
+}
+
+/**
+ * @brief       Decord 0 to 8 as the maximum value of 2 to the 3rd power.
+ *
+ * @param[in]   (val) Value to be decorded
+ * @return      Decorded value
+ * @retval      (1to7) When specified 1 to 7.
+ * @retval      (8) When specified 0.
+ */
+uint8_t DecordingZeroMeans2To3rdPower(uint8_t val)
+{
+    return ((val - 1u) & 0x7u) + 1u;
+}
+
 // end of file {{{1
 // vim:ft=c:et:nowrap:fdm=marker

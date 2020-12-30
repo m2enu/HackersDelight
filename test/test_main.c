@@ -29,6 +29,12 @@ static void test_CeilAverageOfTwoUnsigned(void);
 static void test_FloorAverageOfTwoSigned(void);
 static void test_CeilAverageOfTwoSigned(void);
 
+static void test_SignExtension1(void);
+static void test_SignExtension2(void);
+static void test_SignExtension3(void);
+
+static void test_DecordingZeroMeans2To3rdPower(void);
+
 /**
  * @brief       Test for TurnOffRightmost1Bit
  */
@@ -407,6 +413,57 @@ static void test_CeilAverageOfTwoSigned(void)
 }
 
 /**
+ * @brief       Test for SignExtension1
+ */
+static void test_SignExtension1(void)
+{
+    TEST_ASSERT_EQUAL_HEX8(   0, SignExtension1(0x00u));
+    TEST_ASSERT_EQUAL_HEX8(   1, SignExtension1(0x01u));
+    TEST_ASSERT_EQUAL_HEX8( 127, SignExtension1(0x7fu));
+    TEST_ASSERT_EQUAL_HEX8(-128, SignExtension1(0x80u));
+    TEST_ASSERT_EQUAL_HEX8(  -1, SignExtension1(0xffu));
+}
+
+/**
+ * @brief       Test for SignExtension2
+ */
+static void test_SignExtension2(void)
+{
+    TEST_ASSERT_EQUAL_HEX8(   0, SignExtension2(0x00u));
+    TEST_ASSERT_EQUAL_HEX8(   1, SignExtension2(0x01u));
+    TEST_ASSERT_EQUAL_HEX8( 127, SignExtension2(0x7fu));
+    TEST_ASSERT_EQUAL_HEX8(-128, SignExtension2(0x80u));
+    TEST_ASSERT_EQUAL_HEX8(  -1, SignExtension2(0xffu));
+}
+
+/**
+ * @brief       Test for SignExtension3
+ */
+static void test_SignExtension3(void)
+{
+    TEST_ASSERT_EQUAL_HEX8(   0, SignExtension3(0x00u));
+    TEST_ASSERT_EQUAL_HEX8(   1, SignExtension3(0x01u));
+    TEST_ASSERT_EQUAL_HEX8( 127, SignExtension3(0x7fu));
+    TEST_ASSERT_EQUAL_HEX8(-128, SignExtension3(0x80u));
+    TEST_ASSERT_EQUAL_HEX8(  -1, SignExtension3(0xffu));
+}
+
+/**
+ * @brief       Test for DecordingZeroMeans2To3rdPower
+ */
+static void test_DecordingZeroMeans2To3rdPower(void)
+{
+    TEST_ASSERT_EQUAL_HEX8( 1u, DecordingZeroMeans2To3rdPower(1u));
+    TEST_ASSERT_EQUAL_HEX8( 2u, DecordingZeroMeans2To3rdPower(2u));
+    TEST_ASSERT_EQUAL_HEX8( 3u, DecordingZeroMeans2To3rdPower(3u));
+    TEST_ASSERT_EQUAL_HEX8( 4u, DecordingZeroMeans2To3rdPower(4u));
+    TEST_ASSERT_EQUAL_HEX8( 5u, DecordingZeroMeans2To3rdPower(5u));
+    TEST_ASSERT_EQUAL_HEX8( 6u, DecordingZeroMeans2To3rdPower(6u));
+    TEST_ASSERT_EQUAL_HEX8( 7u, DecordingZeroMeans2To3rdPower(7u));
+    TEST_ASSERT_EQUAL_HEX8( 8u, DecordingZeroMeans2To3rdPower(0u));
+}
+
+/**
  * @brief Unittest main
  */
 int main(void)
@@ -430,6 +487,12 @@ int main(void)
     RUN_TEST(test_CeilAverageOfTwoUnsigned                              );
     RUN_TEST(test_FloorAverageOfTwoSigned                               );
     RUN_TEST(test_CeilAverageOfTwoSigned                                );
+    /* Chapter 2-6 */
+    RUN_TEST(test_SignExtension1                                        );
+    RUN_TEST(test_SignExtension2                                        );
+    RUN_TEST(test_SignExtension3                                        );
+    /* Chapter 2-11 */
+    RUN_TEST(test_DecordingZeroMeans2To3rdPower                         );
     return UNITY_END();
 }
 
