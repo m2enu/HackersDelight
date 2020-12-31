@@ -10,6 +10,7 @@
 
 #include <unity.h>
 #include "chapter_02.h"
+#include "chapter_05.h"
 
 static void test_TurnOffRightmost1Bit(void);
 static void test_TurnOnRightmost0Bit(void);
@@ -34,6 +35,9 @@ static void test_SignExtension2(void);
 static void test_SignExtension3(void);
 
 static void test_DecordingZeroMeans2To3rdPower(void);
+
+static void test_Counting1BitsInWord1(void);
+static void test_Counting1BitsInWord2(void);
 
 /**
  * @brief       Test for TurnOffRightmost1Bit
@@ -464,6 +468,58 @@ static void test_DecordingZeroMeans2To3rdPower(void)
 }
 
 /**
+ * @brief       Test for Counting1BitsInWord1
+ */
+static void test_Counting1BitsInWord1(void)
+{
+    TEST_ASSERT_EQUAL_HEX8(23u, Counting1BitsInWord1(0xdc637effu));
+
+    TEST_ASSERT_EQUAL_HEX8( 0u, Counting1BitsInWord1(0x00000000u));
+    TEST_ASSERT_EQUAL_HEX8(32u, Counting1BitsInWord1(0xffffffffu));
+
+    TEST_ASSERT_EQUAL_HEX8(16u, Counting1BitsInWord1(0x55555555u));
+    TEST_ASSERT_EQUAL_HEX8(16u, Counting1BitsInWord1(0xaaaaaaaau));
+    TEST_ASSERT_EQUAL_HEX8(16u, Counting1BitsInWord1(0x5a5a5a5au));
+    TEST_ASSERT_EQUAL_HEX8(16u, Counting1BitsInWord1(0x55aa55aau));
+    TEST_ASSERT_EQUAL_HEX8(16u, Counting1BitsInWord1(0x5555aaaau));
+
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord1(0x00000001u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord1(0x00000010u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord1(0x00000100u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord1(0x00001000u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord1(0x00010000u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord1(0x00100000u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord1(0x01000000u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord1(0x10000000u));
+}
+
+/**
+ * @brief       Test for Counting1BitsInWord2
+ */
+static void test_Counting1BitsInWord2(void)
+{
+    TEST_ASSERT_EQUAL_HEX8(23u, Counting1BitsInWord2(0xdc637effu));
+
+    TEST_ASSERT_EQUAL_HEX8( 0u, Counting1BitsInWord2(0x00000000u));
+    TEST_ASSERT_EQUAL_HEX8(32u, Counting1BitsInWord2(0xffffffffu));
+
+    TEST_ASSERT_EQUAL_HEX8(16u, Counting1BitsInWord2(0x55555555u));
+    TEST_ASSERT_EQUAL_HEX8(16u, Counting1BitsInWord2(0xaaaaaaaau));
+    TEST_ASSERT_EQUAL_HEX8(16u, Counting1BitsInWord2(0x5a5a5a5au));
+    TEST_ASSERT_EQUAL_HEX8(16u, Counting1BitsInWord2(0x55aa55aau));
+    TEST_ASSERT_EQUAL_HEX8(16u, Counting1BitsInWord2(0x5555aaaau));
+
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord2(0x00000001u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord2(0x00000010u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord2(0x00000100u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord2(0x00001000u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord2(0x00010000u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord2(0x00100000u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord2(0x01000000u));
+    TEST_ASSERT_EQUAL_HEX8( 1u, Counting1BitsInWord2(0x10000000u));
+}
+
+/**
  * @brief Unittest main
  */
 int main(void)
@@ -493,6 +549,9 @@ int main(void)
     RUN_TEST(test_SignExtension3                                        );
     /* Chapter 2-11 */
     RUN_TEST(test_DecordingZeroMeans2To3rdPower                         );
+    /* Chapter 5-1 */
+    RUN_TEST(test_Counting1BitsInWord1                                  );
+    RUN_TEST(test_Counting1BitsInWord2                                  );
     return UNITY_END();
 }
 
