@@ -8,8 +8,8 @@
  *              https://github.com/m2enu/HackersDelight/blob/main/LICENSE
  */
 
-#ifndef CHAPTER_02_01_H
-#define CHAPTER_02_01_H
+#ifndef CHAPTER_02_H
+#define CHAPTER_02_H
 
 #include <stdint.h>
 
@@ -37,7 +37,7 @@ int8_t SignExtension3(uint8_t);
 
 uint8_t DecordingZeroMeans2To3rdPower(uint8_t);
 
-#endif  // CHAPTER_02_01_H
+#endif  // CHAPTER_02_H
 
 // end of file {{{1
 // vim:ft=cpp:et:nowrap:fdm=marker
