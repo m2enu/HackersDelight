@@ -246,6 +246,9 @@ int8_t CeilAverageOfTwoSigned(int8_t x, int8_t y)
  *
  * @param[in]   (val) Value to be extended to signed
  * @return      Sign extended value
+ *
+ * @par         Chapter
+ *              2-6
  */
 int8_t SignExtension1(uint8_t val)
 {
@@ -257,6 +260,9 @@ int8_t SignExtension1(uint8_t val)
  *
  * @param[in]   (val) Value to be extended to signed
  * @return      Sign extended value
+ *
+ * @par         Chapter
+ *              2-6
  */
 int8_t SignExtension2(uint8_t val)
 {
@@ -273,6 +279,9 @@ int8_t SignExtension2(uint8_t val)
  *
  * @param[in]   (val) Value to be extended to signed
  * @return      Sign extended value
+ *
+ * @par         Chapter
+ *              2-6
  */
 int8_t SignExtension3(uint8_t val)
 {
@@ -286,6 +295,9 @@ int8_t SignExtension3(uint8_t val)
  * @return      Decorded value
  * @retval      (1to7) When specified 1 to 7.
  * @retval      (8) When specified 0.
+ *
+ * @par         Chapter
+ *              2-11
  */
 uint8_t DecordingZeroMeans2To3rdPower(uint8_t val)
 {
